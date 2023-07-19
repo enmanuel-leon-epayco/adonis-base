@@ -1,10 +1,9 @@
-const PJson = require("../package.json");
+import Route from '@ioc:Adonis/Core/Route';
+import Config from '@ioc:Adonis/Core/Config';
 
-import Route from "@ioc:Adonis/Core/Route";
-
-Route.get("/ping", async ({ response }) => {
+Route.get('/ping', async ({ response }) => {
   return response.json({
-    name: PJson.name,
-    version: PJson.version,
+    name: Config.get('app.name'),
+    version: Config.get('app.version'),
   });
 });

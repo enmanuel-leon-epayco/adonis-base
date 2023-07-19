@@ -5,12 +5,15 @@
  * file.
  */
 
-import proxyAddr from 'proxy-addr'
-import Env from '@ioc:Adonis/Core/Env'
-import type { ServerConfig } from '@ioc:Adonis/Core/Server'
-import type { LoggerConfig } from '@ioc:Adonis/Core/Logger'
-import type { ProfilerConfig } from '@ioc:Adonis/Core/Profiler'
-import type { ValidatorConfig } from '@ioc:Adonis/Core/Validator'
+import proxyAddr from 'proxy-addr';
+import Env from '@ioc:Adonis/Core/Env';
+import type { ServerConfig } from '@ioc:Adonis/Core/Server';
+import type { LoggerConfig } from '@ioc:Adonis/Core/Logger';
+import type { ProfilerConfig } from '@ioc:Adonis/Core/Profiler';
+import type { ValidatorConfig } from '@ioc:Adonis/Core/Validator';
+
+export const name: string = Env.get('APP_NAME', 'ms-lachec-back');
+export const version: string = '1.0.0';
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,7 @@ import type { ValidatorConfig } from '@ioc:Adonis/Core/Validator'
 | be decrypted.
 |
 */
-export const appKey: string = Env.get('APP_KEY')
+export const appKey: string = Env.get('APP_KEY');
 
 /*
 |--------------------------------------------------------------------------
@@ -127,7 +130,7 @@ export const http: ServerConfig = {
   |
   */
   forceContentNegotiationTo: 'application/json',
-}
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -147,7 +150,8 @@ export const logger: LoggerConfig = {
   | reading the `name` property from the `package.json` file.
   |
   */
-  name: Env.get('APP_NAME'),
+  name: name,
+  version: version,
 
   /*
   |--------------------------------------------------------------------------
@@ -181,7 +185,14 @@ export const logger: LoggerConfig = {
   |
   */
   prettyPrint: Env.get('NODE_ENV') === 'development',
-}
+  formatters: {
+    level: (label) => {
+      return {
+        level: label,
+      };
+    },
+  },
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -220,7 +231,7 @@ export const profiler: ProfilerConfig = {
   |
   */
   whitelist: [],
-}
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -231,5 +242,4 @@ export const profiler: ProfilerConfig = {
 | to the default config https://git.io/JT0WE
 |
 */
-export const validator: ValidatorConfig = {
-}
+export const validator: ValidatorConfig = {};

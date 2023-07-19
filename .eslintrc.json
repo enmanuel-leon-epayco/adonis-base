@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["plugin:adonis/typescriptPackage"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "quotes": [
+      1,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "semi": "on",
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true
+      }
+    ],
+    "space-before-function-paren": "off",
+    "@typescript-eslint/space-before-function-paren": [
+      "error",
+      {
+        "asyncArrow": "always",
+        "anonymous": "always",
+        "named": "never"
+      }
+    ]
+  }
+}

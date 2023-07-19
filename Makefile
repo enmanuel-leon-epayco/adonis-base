@@ -18,3 +18,6 @@ restart: ## Reinicia el contenedor
 
 stop: ## Detiene el contenedor
 	docker-compose stop
+
+rebuild: ## Reinicia la imagen de docker y la crea nuevamente.
+	docker-compose build
